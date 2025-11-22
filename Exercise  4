@@ -1,0 +1,62 @@
+Exercise 4 
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ */
+package javaapplication11;
+
+/**
+ *
+ * @author compufast
+ */
+public class JavaApplication11 {
+
+    static int front = 0, rear = 0, count = 0;
+    static int size = 5;
+    static int[] queue = new int[size];
+
+    static void enqueue(int x) {
+        if (count == size) {
+            System.out.println("Queue is full!");
+            return;
+        }
+        queue[rear] = x;
+        rear = (rear + 1) % size;
+        count++;
+        display();
+    }
+
+    static void dequeue() {
+        if (count == 0) {
+            System.out.println("Queue is empty!");
+            return;
+        }
+        front = (front + 1) % size;
+        count--;
+        display();
+    }
+
+    static void display() {
+        System.out.print("Queue: ");
+        int idx = front;
+        for (int i = 0; i < count; i++) {
+            System.out.print(queue[idx] + " ");
+            idx = (idx + 1) % size;
+        }
+        System.out.println();
+    }
+
+    public static void main(String[] args) {
+
+        System.out.println(" Exercise 4: Circular Queue ");
+
+        enqueue(10);
+        enqueue(20);
+        enqueue(30);
+        enqueue(50);
+        dequeue();
+        enqueue(40);
+        enqueue(60);
+        dequeue();
+    }
+}
